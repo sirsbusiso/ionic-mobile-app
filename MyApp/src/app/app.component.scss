@@ -1,0 +1,10 @@
+@import url(./dark-light-mode.scss);
+p,
+ion-footer,
+ion-label,
+ion-item,
+ion-icon,
+ion-title,
+button {
+  color: var(--darkToLight) !important;
+}

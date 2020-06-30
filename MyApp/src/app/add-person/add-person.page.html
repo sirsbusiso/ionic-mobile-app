@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Add Person </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Add Person
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-input
+          type="text"
+          [(ngModel)]="model.name"
+          placeholder="Name"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="email"
+          [(ngModel)]="model.email"
+          placeholder="Email"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button color="primary" expand="block" (click)="AddPerson(model)"
+      >Add</ion-button
+    >
+    <!-- <ion-button color="secondary" expand="full" (click)="BackToList()"
+        >Cancel</ion-button
+      > -->
+
+    <ion-card-content>
+      <!-- Add card content here! -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

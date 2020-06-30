@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="content1">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Navigate</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list *ngFor="let pages of navigate">
+        <ion-menu-toggle auto-hide="true">
+          <ion-item [routerLink]="pages.url" routerDirection="forward">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            {{ pages.title }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      <ion-item (click)="ThemeSwitcher()">
+        <ion-icon slot="start" name="bulb-outline"></ion-icon>
+        <ion-label>
+          Dark/Light Mode
+        </ion-label>
+      </ion-item>
+    </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title>
+          <ion-item
+            ><ion-icon name="power-outline" routerLink="/start"></ion-icon>
+            Log-out</ion-item
+          >
+        </ion-title>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="content1"></ion-router-outlet>
+</ion-app>

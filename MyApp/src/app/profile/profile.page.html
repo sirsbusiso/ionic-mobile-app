@@ -1,0 +1,50 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Profile </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card">
+    <div class="header">
+      <div class="avatar">
+        <img
+          src="../../assets/5EB60535-CEE2-4095-B684-2E5E411FC48D.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="user-meta ion-text-center">
+        <h3 class="playername">Khayelihle Ntanzi</h3>
+        <h5 class="country">South Africa</h5>
+        <h6 class="ranking">
+          Age
+          <ion-chip>
+            <ion-label>23</ion-label>
+          </ion-chip>
+        </h6>
+      </div>
+
+      <ion-button expand="full" color="primary">
+        Change Profile Picture</ion-button
+      >
+      <ion-button expand="full" color="secondary">Edit Profile</ion-button>
+      <ion-button expand="full" color="danger">Logout</ion-button>
+    </div>
+  </div>
+</ion-content>

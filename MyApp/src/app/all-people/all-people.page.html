@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> People </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-button expand="full" (click)="AddPerson()">Add</ion-button>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item-sliding *ngFor="let p of people">
+      <ion-item>
+        <ion-label>{{p.Name}}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary">
+          Details
+        </ion-item-option>
+        <ion-item-option
+          color="secondary"
+          [routerLink]="['/update-person',p.Id]"
+        >
+          Edit
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(p)">
+          Remove
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
