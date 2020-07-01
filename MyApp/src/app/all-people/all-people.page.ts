@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PeopleService } from "../services/people.service";
 import { Person } from "../models/person";
 import { Router } from "@angular/router";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-all-people",
@@ -10,7 +11,11 @@ import { Router } from "@angular/router";
 })
 export class AllPeoplePage implements OnInit {
   people: Person[];
-  constructor(private _peopleService: PeopleService, private _router: Router) {
+  constructor(
+    private _peopleService: PeopleService,
+    private _router: Router,
+    private alertController: AlertController
+  ) {
     this.GetAllPeople();
   }
 
@@ -21,6 +26,29 @@ export class AllPeoplePage implements OnInit {
       },
       (error) => console.error(console.error)
     );
+  }
+
+  async onDeleteAlert(p: any) {
+    const alert = await this.alertController.create({
+      header: "Delete",
+      subHeader: "delete",
+      message: "Are you sure you want to remove?",
+      buttons: [
+        {
+          text: "No",
+          role: "no",
+          handler: () => {},
+        },
+        {
+          text: "Yes",
+          role: "yes",
+          handler: () => {
+            this.delete(p);
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 
   doRefresh(event) {
@@ -34,16 +62,15 @@ export class AllPeoplePage implements OnInit {
 
   delete(person) {
     console.log(person);
-    if (confirm("Are you sure you want to delete " + person.Name + "?")) {
-      let index = this.people.indexOf(person, 0);
 
-      this._peopleService.DeletePerson(person.Id).subscribe(
-        () => {
-          this.people.splice(index, 1);
-        },
-        (error) => console.error(error)
-      );
-    }
+    let index = this.people.indexOf(person, 0);
+
+    this._peopleService.DeletePerson(person.Id).subscribe(
+      () => {
+        this.people.splice(index, 1);
+      },
+      (error) => console.error(error)
+    );
   }
 
   AddPerson() {
