@@ -44,3 +44,14 @@
     }
   }
 }
+.action-sheet-group {
+  background: #e5e5e5;
+}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .action-sheet-group {
+  background: #e5e5e5;
+}
+.my-custom-class {
+  --background: #e5e5e5;
+}
